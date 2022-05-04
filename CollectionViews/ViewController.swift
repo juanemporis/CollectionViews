@@ -13,6 +13,9 @@ class ViewController: UIViewController, UICollectionViewDelegate {
     
     private let myCountries = ["España","Mexico","Peru","Colombia","Argentina","EEUU","Francia","Italia"]
     
+    //Este codigo hace que cada celda tenga 2 filas
+    private let myCellWidth = UIScreen.main.bounds.width / 2
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -47,6 +50,11 @@ extension ViewController: UITableViewDelegate{
         print("\(indexPath.section) \(indexPath.row) \(myCountries[indexPath.row])")
     }
 }
-    
-
+    //Este codigo hace referencia al tamaño de las celdas 
+extension ViewController: UICollectionViewDelegateFlowLayout{
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        return CGSize(width: myCellWidth, height: myCellWidth)
+    }
+}
 
