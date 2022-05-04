@@ -26,6 +26,7 @@ class ViewController: UIViewController, UICollectionViewDelegate {
     }
 
 }
+// MARK: UICollectionViewDataSource
 extension ViewController: UICollectionViewDataSource{
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -44,17 +45,23 @@ extension ViewController: UICollectionViewDataSource{
         return myCountries.count
     }
 }
+
+// MARK: UICollecitonViewDelegate
 extension ViewController: UITableViewDelegate{
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAT indexPath: IndexPath){
         print("\(indexPath.section) \(indexPath.row) \(myCountries[indexPath.row])")
     }
 }
+// MARK: UICollectionViewDelegateFlowLayout
     //Este codigo hace referencia al tamaño de las celdas 
 extension ViewController: UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
+        if indexPath.section == 0 {
         return CGSize(width: myCellWidth, height: myCellWidth)
     }
+        return CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.width)
+}
 }
 
