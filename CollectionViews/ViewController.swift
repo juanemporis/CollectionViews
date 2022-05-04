@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UICollectionViewDelegate {
     
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -17,6 +17,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         collectionView.dataSource = self
+        collectionView.delegate = self
         
         collectionView.register(UINib(nibName: "MyCustomCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "mycell")
     }
@@ -40,7 +41,12 @@ extension ViewController: UICollectionViewDataSource{
         return myCountries.count
     }
 }
-
+extension ViewController: UITableViewDelegate{
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAT indexPath: IndexPath){
+        print("\(indexPath.section) \(indexPath.row) \(myCountries[indexPath.row])")
+    }
+}
     
 
 
